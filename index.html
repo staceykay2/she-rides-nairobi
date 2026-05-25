@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>She Rides Nairobi | Exclusive Women's Roadtrips</title>
     <style>
-        /* --- CSS VARIABLES & RESET --- */
         :root {
             --neon-pink: #ff00ff;
             --neon-purple: #bc13fe;
@@ -20,302 +19,130 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text-white);
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+        body { background-color: var(--dark-bg); color: var(--text-white); overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
 
-        /* --- BACKGROUND --- */
-        .bg-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background-image: url('background.jpg'); 
-            background-size: cover; background-position: center;
-        }
-        .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,0,20,0.9));
-            z-index: -1;
-        }
+        .bg-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: url('background.jpg'); background-size: cover; background-position: center; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,0,20,0.9)); z-index: -1; }
 
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%; background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px); border-bottom: 1px solid var(--neon-pink);
-            position: sticky; top: 0; z-index: 1000;
-        }
-
-        .nav-text-logo {
-            font-size: 1.8rem; font-weight: bold; text-transform: uppercase;
-            background: linear-gradient(90deg, var(--neon-pink), var(--electric-blue));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
-        }
-
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--neon-pink); position: sticky; top: 0; z-index: 1000; }
+        .nav-text-logo { font-size: 1.4rem; font-weight: bold; text-transform: uppercase; background: linear-gradient(90deg, var(--neon-pink), var(--electric-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .menu-toggle { display: none; font-size: 2rem; color: white; cursor: pointer; z-index: 1001; padding: 10px; }
         .nav-links { list-style: none; display: flex; gap: 25px; }
-        .nav-links li a {
-            color: var(--text-white); text-decoration: none; font-size: 0.9rem;
-            text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s;
-        }
-        .nav-links li a:hover { color: var(--electric-blue); text-shadow: 0 0 8px var(--electric-blue); }
-        .admin-btn { border: 1px solid var(--neon-pink); padding: 5px 15px; border-radius: 20px; cursor: pointer; background: transparent; color: white; }
+        .nav-links li a { color: white; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; }
+        .nav-links li a:hover { color: var(--electric-blue); }
+        
+        .hero-section { text-align: center; padding: 80px 20px 40px; margin-bottom: 40px; }
+        .hero-title { font-size: 3.5rem; text-transform: uppercase; margin-bottom: 15px; color: white; text-shadow: 0 0 20px var(--neon-pink), 0 0 40px var(--neon-purple); line-height: 1.1; }
+        .hero-subtitle { font-size: 1.2rem; color: var(--electric-blue); text-shadow: 0 0 10px var(--electric-blue); letter-spacing: 2px; }
 
-        /* --- HERO SECTION --- */
-        .hero-section {
-            text-align: center;
-            padding: 100px 20px 60px;
-            margin-bottom: 40px;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            color: white;
-            text-shadow: 0 0 20px var(--neon-pink), 0 0 40px var(--neon-purple);
-            line-height: 1.1;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--electric-blue);
-            text-shadow: 0 0 10px var(--electric-blue);
-            letter-spacing: 2px;
-        }
-
-        /* --- MAIN LAYOUT --- */
         .container { max-width: 1400px; margin: 0 auto; padding: 0 20px 40px; flex: 1; }
+        h2 { font-size: 2.2rem; margin-bottom: 30px; text-transform: uppercase; border-left: 5px solid var(--neon-purple); padding-left: 15px; color: white; }
+
+        .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .card { background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 20px; backdrop-filter: blur(12px); transition: transform 0.3s; position: relative; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(188, 19, 254, 0.4); }
+        .card-img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; background: #222; }
+        .card-tag { position: absolute; top: 15px; right: 15px; background: var(--magenta); color: white; padding: 5px 10px; font-size: 0.7rem; border-radius: 5px; text-transform: uppercase; font-weight: bold; }
+        .card-date { color: var(--electric-blue); font-weight: bold; margin-bottom: 10px; display: block; }
         
-        h2 {
-            font-size: 2.5rem; margin-bottom: 30px; text-transform: uppercase;
-            border-left: 5px solid var(--neon-purple); padding-left: 15px;
-            background: linear-gradient(90deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
+        .btn-book { display: inline-block; width: 100%; padding: 12px; background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple)); color: white; text-align: center; border-radius: 8px; font-weight: bold; text-transform: uppercase; cursor: pointer; border: none; margin-top: 10px; }
+        .btn-edit { background: var(--electric-blue); color: black; margin-top: 5px; }
 
-        /* --- COUNTDOWN TIMER --- */
-        .countdown-wrapper {
-            background: linear-gradient(45deg, rgba(255,0,255,0.2), rgba(0,243,255,0.2));
-            border: 2px solid var(--neon-pink);
-            padding: 30px; border-radius: 15px; text-align: center;
-            margin-bottom: 50px; backdrop-filter: blur(5px);
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
-        }
-        .timer-display {
-            display: flex; justify-content: center; gap: 20px; font-size: 2.5rem; font-weight: bold;
-        }
-        .time-val { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); }
-        .time-label { font-size: 0.8rem; color: white; text-transform: uppercase; }
+        .past-events-wrapper { display: flex; flex-direction: column; gap: 40px; margin-bottom: 60px; }
+        .past-event-card-wide { display: flex; background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden; height: 300px; }
+        .past-event-img-wide { width: 40%; height: 100%; object-fit: cover; }
+        .past-event-content { width: 60%; padding: 40px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(90deg, rgba(0,0,0,0.8), transparent); }
+        .past-event-title { font-size: 2rem; color: var(--neon-pink); margin-bottom: 10px; text-transform: uppercase; }
 
-        /* --- EVENT CARDS --- */
-        .event-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; margin-bottom: 60px;
-        }
-        .card {
-            background: var(--glass-bg); border: 1px solid var(--glass-border);
-            border-radius: 15px; padding: 20px; backdrop-filter: blur(12px);
-            transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden;
-        }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(188, 19, 254, 0.4); border-color: var(--neon-purple); }
-        
-        .card-img {
-            width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;
-            background: #222;
-        }
-        
-        .card-tag {
-            position: absolute; top: 15px; right: 15px; background: var(--magenta);
-            color: white; padding: 5px 10px; font-size: 0.7rem; border-radius: 5px; text-transform: uppercase; font-weight: bold;
-        }
-
-        .btn-book {
-            display: inline-block; width: 100%; padding: 12px;
-            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
-            color: white; text-align: center; text-decoration: none; border-radius: 8px;
-            font-weight: bold; text-transform: uppercase; cursor: pointer; border: none; margin-top: 10px;
-        }
-
-        /* --- MERCHANDISE GRID --- */
-        .merch-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px; margin-bottom: 60px;
-        }
-        
-        .color-dots {
-            display: flex; gap: 5px; margin: 10px 0;
-        }
-        .color-dot {
-            width: 20px; height: 20px; border-radius: 50%; border: 2px solid white;
-            display: inline-block;
-        }
-
-        /* --- PAST EVENTS (CINEMATIC STYLE) --- */
-        .past-events-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .past-event-card-wide {
-            display: flex;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            overflow: hidden;
-            height: 300px;
-            position: relative;
-        }
-
-        .past-event-img-wide {
-            width: 40%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .past-event-content {
-            width: 60%;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: linear-gradient(90deg, rgba(0,0,0,0.8), transparent);
-        }
-
-        .past-event-title {
-            font-size: 2rem;
-            color: var(--neon-pink);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: rgba(0,0,0,0.95); border-top: 1px solid var(--neon-purple);
-            padding: 50px 20px; text-align: center; margin-top: auto;
-        }
-        .footer-logo-text {
-            font-size: 2rem; font-weight: bold; color: var(--neon-pink); margin-bottom: 20px; display: inline-block;
-            text-transform: uppercase;
-        }
+        footer { background: rgba(0,0,0,0.95); border-top: 1px solid var(--neon-purple); padding: 50px 20px; text-align: center; margin-top: auto; }
+        .footer-logo-text { font-size: 2rem; font-weight: bold; color: var(--neon-pink); margin-bottom: 20px; display: inline-block; text-transform: uppercase; }
         .contact-info { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 20px; }
         .contact-item { color: var(--electric-blue); font-size: 1.1rem; }
 
-        /* --- MODALS --- */
-        .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9); z-index: 2000;
-            justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: #1a1a2e; border: 2px solid var(--electric-blue);
-            padding: 40px; border-radius: 15px; width: 90%; max-width: 500px;
-            position: relative; box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
-            max-height: 90vh; overflow-y: auto;
-        }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; text-align: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: #1a1a2e; border: 2px solid var(--electric-blue); padding: 40px; border-radius: 15px; width: 90%; max-width: 500px; position: relative; max-height: 90vh; overflow-y: auto; }
         .close-modal { position: absolute; top: 15px; right: 20px; color: white; font-size: 24px; cursor: pointer; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; color: var(--electric-blue); }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.1);
-            border: 1px solid #444; color: white; border-radius: 5px;
-        }
-        .mpesa-info {
-            background: rgba(0, 255, 0, 0.1); border: 1px solid #00ff00;
-            padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center;
-        }
-        .mpesa-number { font-size: 1.4rem; font-weight: bold; color: #00ff00; display: block; margin-top: 5px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.1); border: 1px solid #444; color: white; border-radius: 5px; }
+        
+        .pochi-info { background: rgba(0, 255, 0, 0.1); border: 2px solid #00ff00; padding: 20px; border-radius: 10px; margin-bottom: 25px; text-align: center; }
+        .pochi-number { font-size: 1.8rem; font-weight: bold; color: #00ff00; display: block; margin: 10px 0; }
 
-        /* --- ADMIN DASHBOARD --- */
-        #admin-dashboard { display: none; padding: 40px; background: #111; min-height: 100vh; }
+        #admin-dashboard { display: none; padding: 20px; background: #111; min-height: 100vh; }
         .admin-section { margin-bottom: 50px; border-bottom: 1px solid #333; padding-bottom: 30px; }
-        .admin-header { display: flex; justify-content: space-between; margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #1a1a1a; }
         th, td { padding: 15px; text-align: left; border-bottom: 1px solid #333; }
         th { background: #252525; color: var(--electric-blue); }
         
+        .payment-options { display: flex; gap: 10px; margin-top: 10px; }
+        .pay-option { flex: 1; padding: 15px; border: 1px solid var(--neon-pink); background: rgba(255,0,255,0.1); color: white; cursor: pointer; text-align: center; border-radius: 8px; }
+        .pay-option.selected { background: var(--neon-pink); color: black; font-weight: bold; }
+
+        .color-dots { display: flex; gap: 5px; margin: 10px 0; }
+        .color-dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; }
+
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-title { font-size: 2.5rem; }
+            .menu-toggle { display: block; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(0,0,0,0.98); padding: 20px; }
+            .nav-links.active { display: flex; }
+            .hero-title { font-size: 2.2rem; }
+            .event-grid { grid-template-columns: 1fr; }
             .past-event-card-wide { flex-direction: column; height: auto; }
             .past-event-img-wide { width: 100%; height: 200px; }
-            .past-event-content { width: 100%; }
+            .past-event-content { width: 100%; padding: 20px; }
+            #event-form, form[onsubmit="addMerch(event)"] { grid-template-columns: 1fr !important; }
+            table { display: block; overflow-x: auto; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background -->
     <div class="bg-container"></div>
     <div class="overlay"></div>
 
-    <!-- Navigation -->
     <nav>
-        <div class="logo-container">
-            <div class="nav-text-logo">She Rides Nairobi</div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#events">Events</a></li>
-            <li><a href="#merch">Merchandise</a></li>
-            <li><a href="#past-events">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><button class="admin-btn" onclick="openAdminLogin()">Admin Portal</button></li>
+        <div class="nav-text-logo">She Rides Nairobi</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#events" onclick="toggleMenu()">Events</a></li>
+            <li><a href="#merch" onclick="toggleMenu()">Merchandise</a></li>
+            <li><a href="#past-events" onclick="toggleMenu()">Gallery</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            <li><a href="#" onclick="toggleMenu(); openAdminLogin()" style="color: var(--neon-pink);">Admin Portal</a></li>
         </ul>
     </nav>
 
-    <!-- Main Content -->
     <div id="main-content" class="container">
-        
-        <!-- Hero Section -->
         <div class="hero-section">
             <h1 class="hero-title">The Ultimate Nightlife Experience</h1>
             <p class="hero-subtitle">Luxury Matatu Culture • Women Only • Unforgettable Vibes</p>
         </div>
 
-        <!-- Countdown Timer -->
-        <div class="countdown-wrapper" id="countdown-section">
-            <div class="countdown-title">Next Event Drops In:</div>
-            <div class="timer-display" id="timer">
-                <div class="time-unit"><span class="time-val" id="days">00</span><span class="time-label">Days</span></div>
-                <div class="time-unit"><span class="time-val" id="hours">00</span><span class="time-label">Hrs</span></div>
-                <div class="time-unit"><span class="time-val" id="minutes">00</span><span class="time-label">Mins</span></div>
-                <div class="time-unit"><span class="time-val" id="seconds">00</span><span class="time-label">Secs</span></div>
-            </div>
-            <p id="next-event-name" style="margin-top: 15px; color: white; font-weight: bold;">Loading next event...</p>
-        </div>
-
-        <!-- Upcoming Events -->
         <section id="events">
             <h2>🔥 Upcoming Experiences</h2>
             <div class="event-grid" id="upcoming-grid">
-                <p style="color: #666; grid-column: 1/-1; text-align: center;">No events scheduled currently. Check back soon!</p>
+                <p style="color: #666; grid-column: 1/-1; text-align: center;">Loading events...</p>
             </div>
         </section>
 
-        <!-- Merchandise -->
         <section id="merch">
             <h2>👕 She Rides Merch</h2>
-            <p style="margin-bottom: 20px; color: var(--text-gray);">Customize your back print! Select an item and tell us what you want written.</p>
-            <div class="merch-grid" id="merch-grid">
-                <p style="color: #666; grid-column: 1/-1; text-align: center;">New stock incoming...</p>
+            <div class="event-grid" id="merch-grid">
+                <p style="color: #666; grid-column: 1/-1; text-align: center;">Loading merchandise...</p>
             </div>
         </section>
 
-        <!-- Past Events Gallery (Cinematic) -->
         <section id="past-events">
             <h2>📸 Past Events & Memories</h2>
             <div class="past-events-wrapper" id="past-events-grid">
-                <p style="color: #666; text-align: center;">No past events recorded yet.</p>
+                <p style="color: #666; text-align: center;">Loading gallery...</p>
             </div>
         </section>
-
     </div>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="footer-logo-text">She Rides Nairobi</div>
         <div class="contact-info">
@@ -326,196 +153,113 @@
         <div class="copyright">&copy; 2026 She Rides Nairobi. All Rights Reserved.</div>
     </footer>
 
+    <a href="https://chat.whatsapp.com/BS2lE0AeEal1nAQiWQP0LI?mode=gi_t" target="_blank" class="whatsapp-float">💬</a>
+
     <!-- ADMIN DASHBOARD -->
     <div id="admin-dashboard">
-        <div class="admin-header">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
             <h2>Admin Control Center</h2>
-            <button onclick="logoutAdmin()" style="padding: 10px 20px; background: red; color: white; border: none; cursor: pointer;">Logout</button>
+            <button onclick="logoutAdmin()" style="padding:10px; background:red; color:white; border:none;">Logout</button>
         </div>
 
         <!-- Add Event Section -->
         <div class="admin-section">
-            <h3 style="color: var(--neon-pink); margin-bottom: 20px;">Add New Event</h3>
-            <form onsubmit="addEvent(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="form-group">
-                    <label>Event Title</label>
-                    <input type="text" id="admin-event-title" required>
-                </div>
-                <div class="form-group">
-                    <label>Date & Time</label>
-                    <input type="datetime-local" id="admin-event-date" required>
-                </div>
-                <div class="form-group">
-                    <label>Price (KES)</label>
-                    <input type="number" id="admin-event-price" required>
-                </div>
-                <div class="form-group">
-                    <label>Type</label>
-                    <select id="admin-event-type">
-                        <option value="Roadtrip">Roadtrip</option>
-                        <option value="Nightlife">Nightlife/Sampling</option>
-                        <option value="Park & Chill">Park & Chill</option>
-                    </select>
-                </div>
-                <div class="form-group" style="grid-column: 1 / -1;">
-                    <label>Description</label>
-                    <textarea id="admin-event-desc" rows="3"></textarea>
-                </div>
-                <div class="form-group" style="grid-column: 1 / -1;">
-                    <label>Upload Poster (From Gallery)</label>
-                    <input type="file" id="admin-event-file" accept="image/*" required>
-                </div>
-                <button type="submit" class="btn-book" style="grid-column: 1 / -1;">Post Event</button>
+            <h3 style="color:var(--neon-pink); margin-bottom:20px;">Add New Event</h3>
+            <form id="event-form" onsubmit="handleEventSubmit(event)" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                <div class="form-group"><label>Event Title</label><input type="text" id="admin-event-title" required></div>
+                <div class="form-group"><label>Date & Time</label><input type="datetime-local" id="admin-event-date" required></div>
+                <div class="form-group"><label>Total Price (KES)</label><input type="number" id="admin-event-price" required></div>
+                <div class="form-group"><label>Deposit (KES)</label><input type="number" id="admin-event-deposit" placeholder="Optional"></div>
+                <div class="form-group"><label>Type</label><select id="admin-event-type"><option value="Roadtrip">Roadtrip</option><option value="Nightlife">Nightlife</option><option value="Park & Chill">Park & Chill</option></select></div>
+                <div class="form-group" style="grid-column:1/-1;"><label>Description</label><textarea id="admin-event-desc" rows="3"></textarea></div>
+                <div class="form-group" style="grid-column:1/-1;"><label>Upload Poster (From Gallery)</label><input type="file" id="admin-event-file" accept="image/*" required></div>
+                <button type="submit" class="btn-book" id="save-event-btn" style="grid-column:1/-1;">Post Event</button>
             </form>
         </div>
 
         <!-- Add Merch Section -->
         <div class="admin-section">
-            <h3 style="color: var(--electric-blue); margin-bottom: 20px;">Add Merchandise</h3>
-            <form onsubmit="addMerch(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="form-group">
-                    <label>Item Name</label>
-                    <input type="text" id="admin-merch-name" required>
-                </div>
-                <div class="form-group">
-                    <label>Price (KES)</label>
-                    <input type="number" id="admin-merch-price" required>
-                </div>
-                <div class="form-group">
-                    <label>Sizes Available</label>
-                    <input type="text" id="admin-merch-sizes" placeholder="e.g. S, M, L, XL">
-                </div>
-                <div class="form-group">
-                    <label>Available Colors</label>
-                    <input type="text" id="admin-merch-colors" placeholder="e.g. Pink, Black, White">
-                    <small style="color:#888">Separate with commas. Admin will display these as options.</small>
-                </div>
-                <div class="form-group">
-                    <label>Status</label>
-                    <select id="admin-merch-status">
-                        <option value="In Stock">In Stock</option>
-                        <option value="New Stock Incoming">New Stock Incoming</option>
-                    </select>
-                </div>
-                <div class="form-group" style="grid-column: 1 / -1;">
-                    <label>Upload Photo (From Gallery)</label>
-                    <input type="file" id="admin-merch-file" accept="image/*" required>
-                </div>
-                <button type="submit" class="btn-book" style="grid-column: 1 / -1; background: var(--electric-blue); color: black;">Add Item</button>
+            <h3 style="color:var(--electric-blue); margin-bottom:20px;">Add Merchandise</h3>
+            <form onsubmit="addMerch(event)" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                <div class="form-group"><label>Item Name</label><input type="text" id="admin-merch-name" required></div>
+                <div class="form-group"><label>Price (KES)</label><input type="number" id="admin-merch-price" required></div>
+                <div class="form-group"><label>Sizes Available</label><input type="text" id="admin-merch-sizes" placeholder="e.g. S, M, L, XL"></div>
+                <div class="form-group"><label>Available Colors</label><input type="text" id="admin-merch-colors" placeholder="e.g. Pink, Black, White"></div>
+                <div class="form-group"><label>Status</label><select id="admin-merch-status"><option value="In Stock">In Stock</option><option value="New Stock Incoming">New Stock Incoming</option></select></div>
+                <div class="form-group" style="grid-column:1/-1;"><label>Upload Photo (From Gallery)</label><input type="file" id="admin-merch-file" accept="image/*" required></div>
+                <button type="submit" class="btn-book" style="grid-column:1/-1; background:var(--electric-blue); color:black;">Add Item</button>
             </form>
         </div>
 
         <!-- Add Past Event Section -->
         <div class="admin-section">
-            <h3 style="color: white; margin-bottom: 20px;">Add to Past Events Gallery</h3>
-            <form onsubmit="addPastEvent(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="form-group" style="grid-column: 1 / -1;">
-                    <label>Event Name</label>
-                    <input type="text" id="admin-past-title" required>
-                </div>
-                <div class="form-group" style="grid-column: 1 / -1;">
-                    <label>Upload Cover Photo (Optional)</label>
-                    <input type="file" id="admin-past-file" accept="image/*">
-                </div>
-                <button type="submit" class="btn-book" style="grid-column: 1 / -1; background: #333; border: 1px solid white;">Add to Gallery</button>
+            <h3 style="color:white; margin-bottom:20px;">Add to Past Events Gallery</h3>
+            <form onsubmit="addPastEvent(event)" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                <div class="form-group" style="grid-column:1/-1;"><label>Event Name</label><input type="text" id="admin-past-title" required></div>
+                <div class="form-group" style="grid-column:1/-1;"><label>Upload Cover Photo (From Gallery)</label><input type="file" id="admin-past-file" accept="image/*" required></div>
+                <button type="submit" class="btn-book" style="grid-column:1/-1; background:#333; border:1px solid white;">Add to Gallery</button>
             </form>
         </div>
 
         <!-- Bookings Table -->
         <div class="admin-section">
-            <h3 style="color: white; margin-bottom: 20px;">Recent Bookings & Orders</h3>
+            <h3 style="color:white; margin-bottom:20px;">Recent Bookings</h3>
             <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Name</th>
-                        <th>Item/Event</th>
-                        <th>Custom Text</th>
-                        <th>M-Pesa Code</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Date</th><th>Name</th><th>Phone</th><th>Event</th><th>Amount</th><th>Code</th><th>Status</th><th>Action</th></tr></thead>
                 <tbody id="admin-table-body"></tbody>
             </table>
         </div>
     </div>
 
-    <!-- PAYMENT/ORDER MODAL -->
+    <!-- PAYMENT MODAL -->
     <div id="payment-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('payment-modal')">&times;</span>
-            <h2 style="text-align: center; border: none; font-size: 1.8rem;">Complete Order</h2>
-            
-            <div class="mpesa-info">
-                <p>Send Amount via M-Pesa / Pochi La Biashara</p>
-                <span class="mpesa-number">0790045880</span>
+            <h2 style="text-align:center; margin-bottom:20px;">Complete Order</h2>
+            <div class="pochi-info">
+                <p>Send Payment via <strong>Pochi La Biashara</strong></p>
+                <span class="pochi-number">0790045880</span>
             </div>
-
             <form id="booking-form" onsubmit="handleBooking(event)">
-                <div class="form-group">
-                    <label>Selected Item/Event</label>
-                    <input type="text" id="selected-item-name" readonly style="background: #333; cursor: not-allowed;">
-                </div>
+                <div class="form-group"><label>Selected Item/Event</label><input type="text" id="selected-item-name" readonly style="background:#333;"></div>
+                <input type="hidden" id="selected-item-price">
+                <input type="hidden" id="selected-item-deposit">
                 
-                <!-- Custom Back Text Field -->
-                <div class="form-group" id="custom-text-group">
-                    <label>Custom Back Print (Optional)</label>
-                    <input type="text" id="custom-back-text" placeholder="e.g. 'Queen of the Ride' or Your Name">
-                    <small style="color: #888;">Leave blank if you want the standard design.</small>
+                <div class="form-group" id="payment-type-group" style="display:none;">
+                    <label>Choose Payment Option:</label>
+                    <div class="payment-options">
+                        <div class="pay-option selected" onclick="selectPaymentType('full', this)">Pay Full<br><strong>KES <span id="opt-full-price">0</span></strong></div>
+                        <div class="pay-option" onclick="selectPaymentType('deposit', this)">Pay Deposit<br><strong>KES <span id="opt-deposit-price">0</span></strong></div>
+                    </div>
+                    <input type="hidden" id="selected-payment-type" value="full">
+                    <input type="hidden" id="final-amount-to-pay">
                 </div>
 
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="booker-name" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label>M-Pesa Confirmation Code</label>
-                    <input type="text" id="mpesa-code" required placeholder="e.g., QFH34..." style="text-transform: uppercase;">
-                </div>
-                <button type="submit" class="btn-book">Submit Payment Proof</button>
+                <div class="form-group"><label>Your Phone Number</label><input type="tel" id="user-phone" required></div>
+                <div class="form-group"><label>Full Name</label><input type="text" id="booker-name" required></div>
+                <div class="form-group"><label>M-Pesa Confirmation Code</label><input type="text" id="mpesa-code" required style="text-transform:uppercase;"></div>
+                <button type="submit" class="btn-book">Confirm Payment & Book</button>
             </form>
         </div>
     </div>
 
     <!-- ADMIN LOGIN MODAL -->
     <div id="admin-login-modal" class="modal">
-        <div class="modal-content" style="max-width: 400px;">
+        <div class="modal-content" style="max-width:400px;">
             <span class="close-modal" onclick="closeModal('admin-login-modal')">&times;</span>
-            <h2 style="text-align: center; border: none;">Admin Access</h2>
+            <h2 style="text-align:center;">Admin Access</h2>
             <form onsubmit="checkAdminPassword(event)">
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="admin-pass" required>
-                </div>
+                <div class="form-group"><label>Password</label><input type="password" id="admin-pass" required></div>
                 <button type="submit" class="btn-book">Login</button>
             </form>
         </div>
     </div>
 
     <script>
-        // --- DATA STATE ---
-        let events = JSON.parse(localStorage.getItem('srn_events')) || [];
-        let merch = JSON.parse(localStorage.getItem('srn_merch')) || [];
-        let pastEvents = JSON.parse(localStorage.getItem('srn_past_events')) || [];
-        let bookings = JSON.parse(localStorage.getItem('srn_bookings')) || [];
+        // --- BACKEND CONFIGURATION ---
+        const API_URL = 'https://sheridesnairobi.onrender.com/api';
 
-        const DEFAULT_PAST_IMG = "https://via.placeholder.com/800x400/111/fff?text=She+Rides+Memories";
-
-        window.onload = function() {
-            loadEvents();
-            loadMerch();
-            loadPastEvents();
-            startCountdown();
-        };
-
-        function saveData() {
-            localStorage.setItem('srn_events', JSON.stringify(events));
-            localStorage.setItem('srn_merch', JSON.stringify(merch));
-            localStorage.setItem('srn_past_events', JSON.stringify(pastEvents));
-            localStorage.setItem('srn_bookings', JSON.stringify(bookings));
-        }
-
+        // --- HELPER: CONVERT FILE TO BASE64 ---
         const toBase64 = file => new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -523,239 +267,396 @@
             reader.onerror = error => reject(error);
         });
 
-        // --- RENDER FUNCTIONS ---
+        // --- MOBILE MENU ---
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
 
-        function loadEvents() {
+        // --- LOAD EVENTS FROM BACKEND ---
+        async function loadEvents() {
             const grid = document.getElementById('upcoming-grid');
-            grid.innerHTML = '';
-            events.sort((a, b) => new Date(a.date) - new Date(b.date));
-            const futureEvents = events.filter(e => new Date(e.date) > new Date());
-
-            if (futureEvents.length === 0) {
-                grid.innerHTML = '<p style="color: #666; grid-column: 1/-1; text-align: center;">No upcoming events. Stay tuned!</p>';
-                document.getElementById('next-event-name').innerText = "No upcoming events scheduled.";
-                return;
-            }
-
-            const nextEvent = futureEvents[0];
-            document.getElementById('next-event-name').innerText = `Next: ${nextEvent.title} on ${new Date(nextEvent.date).toLocaleDateString()}`;
-            window.nextEventDate = new Date(nextEvent.date).getTime();
-
-            futureEvents.forEach(event => {
-                const dateStr = new Date(event.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit' });
-                grid.innerHTML += `
-                    <div class="card">
-                        <img src="${event.img}" class="card-img" alt="Event Poster">
-                        <span class="card-tag">${event.type}</span>
-                        <span class="card-date">${dateStr}</span>
-                        <h3>${event.title}</h3>
-                        <p>${event.desc}</p>
-                        <p style="color: var(--neon-pink); font-weight: bold;">KES ${event.price}</p>
-                        <button class="btn-book" onclick="openPayment('${event.title}', false)">Book Now</button>
-                    </div>
-                `;
-            });
-        }
-
-        function loadMerch() {
-            const grid = document.getElementById('merch-grid');
-            grid.innerHTML = '';
-
-            merch.forEach(item => {
-                const isNew = item.status === "New Stock Incoming";
-                const tag = isNew ? `<span class="card-tag" style="left:15px; right:auto; background:var(--electric-blue); color:black;">New Stock</span>` : '';
+            grid.innerHTML = '<p style="color:#666;">Loading events...</p>';
+            
+            try {
+                const response = await fetch(`${API_URL}/events`);
+                const events = await response.json();
                 
-                // Generate Color Dots
-                let colorDotsHTML = '';
-                if(item.colors) {
-                    const colors = item.colors.split(',');
-                    colors.forEach(c => {
-                        const cleanColor = c.trim();
-                        // Simple mapping for common colors, otherwise use the name as background
-                        let bg = cleanColor.toLowerCase();
-                        if(bg === 'white') bg = '#fff';
-                        if(bg === 'black') bg = '#000';
-                        if(bg === 'pink') bg = '#ff00ff';
-                        
-                        colorDotsHTML += `<span class="color-dot" style="background:${bg}; title="${cleanColor}""></span>`;
-                    });
+                grid.innerHTML = '';
+                if (events.length === 0) {
+                    grid.innerHTML = '<p style="color:#666; text-align:center;">No upcoming events.</p>';
+                    return;
                 }
 
-                grid.innerHTML += `
-                    <div class="card">
-                        ${tag}
-                        <img src="${item.img}" class="card-img" alt="${item.name}">
-                        <h3>${item.name}</h3>
-                        <div class="sizes-list">Sizes: ${item.sizes}</div>
-                        <div class="color-dots">${colorDotsHTML}</div>
-                        <p style="color: var(--electric-blue); font-weight: bold; font-size: 1.2rem;">KES ${item.price}</p>
-                        <button class="btn-book" onclick="openPayment('${item.name}', true)">Order Custom</button>
-                    </div>
-                `;
-            });
+                events.forEach(event => {
+                    const dateStr = new Date(event.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                    grid.innerHTML += `
+                        <div class="card">
+                            <img src="${event.image_url}" class="card-img">
+                            <span class="card-tag">${event.type}</span>
+                            <span class="card-date">${dateStr}</span>
+                            <h3>${event.title}</h3>
+                            <p>${event.description}</p>
+                            <p style="color:var(--neon-pink); font-weight:bold;">Total: KES ${event.price}</p>
+                            <button class="btn-book" onclick="openPayment('${event.id}', '${event.title}', '${event.price}', '${event.deposit}')">Book Now</button>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error(error);
+                grid.innerHTML = '<p style="color:red;">Error loading events.</p>';
+            }
         }
 
-        function loadPastEvents() {
+        // --- LOAD MERCH FROM BACKEND ---
+        async function loadMerch() {
+            const grid = document.getElementById('merch-grid');
+            try {
+                const response = await fetch(`${API_URL}/merch`);
+                const merch = await response.json();
+                
+                grid.innerHTML = '';
+                if (merch.length === 0) {
+                    grid.innerHTML = '<p style="color:#666; text-align:center;">No merchandise available.</p>';
+                    return;
+                }
+
+                merch.forEach(item => {
+                    let colorDotsHTML = '';
+                    if(item.colors) {
+                        item.colors.split(',').forEach(c => {
+                            let bg = c.trim().toLowerCase();
+                            if(bg === 'white') bg = '#fff';
+                            if(bg === 'black') bg = '#000';
+                            if(bg === 'pink') bg = '#ff00ff';
+                            colorDotsHTML += `<span class="color-dot" style="background:${bg}"></span>`;
+                        });
+                    }
+                    
+                    grid.innerHTML += `
+                        <div class="card">
+                            <img src="${item.image_url}" class="card-img">
+                            <h3>${item.name}</h3>
+                            <div style="font-size:0.9rem; color:#ccc;">Sizes: ${item.sizes}</div>
+                            <div class="color-dots">${colorDotsHTML}</div>
+                            <p style="color:var(--electric-blue); font-weight:bold; margin-top:10px;">KES ${item.price}</p>
+                            <button class="btn-book" onclick="openPayment('${item.id}', '${item.name}', '${item.price}', 0, true)">Order Now</button>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error(error);
+                grid.innerHTML = '<p style="color:#666; text-align:center;">Merchandise coming soon!</p>';
+            }
+        }
+
+        // --- LOAD PAST EVENTS ---
+        async function loadPastEvents() {
             const grid = document.getElementById('past-events-grid');
-            grid.innerHTML = '';
+            try {
+                const response = await fetch(`${API_URL}/past-events`);
+                const events = await response.json();
+                
+                grid.innerHTML = '';
+                if (events.length === 0) {
+                    grid.innerHTML = '<p style="color:#666; text-align:center;">No past events recorded yet.</p>';
+                    return;
+                }
+
+                events.forEach(evt => {
+                    grid.innerHTML += `
+                        <div class="past-event-card-wide">
+                            <img src="${evt.image_url}" class="past-event-img-wide">
+                            <div class="past-event-content">
+                                <h3 class="past-event-title">${evt.title}</h3>
+                                <p style="color:#ccc;">Relive the memories!</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error(error);
+                grid.innerHTML = '<p style="color:#666; text-align:center;">Gallery loading...</p>';
+            }
+        }
+
+        // --- ADMIN: ADD EVENT WITH IMAGE UPLOAD ---
+        async function handleEventSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('save-event-btn');
+            btn.innerText = "Posting...";
+            btn.disabled = true;
             
-            if(pastEvents.length === 0) {
-                grid.innerHTML = '<p style="color: #666; text-align: center;">No past events recorded yet.</p>';
-                return;
+            const fileInput = document.getElementById('admin-event-file');
+            let imageData = '';
+            
+            if (fileInput.files.length > 0) {
+                try {
+                    imageData = await toBase64(fileInput.files[0]);
+                } catch (error) {
+                    alert("Error processing image");
+                    btn.innerText = "Post Event";
+                    btn.disabled = false;
+                    return;
+                }
             }
 
-            pastEvents.forEach(evt => {
-                const imgUrl = evt.img ? evt.img : DEFAULT_PAST_IMG;
-                grid.innerHTML += `
-                    <div class="past-event-card-wide">
-                        <img src="${imgUrl}" class="past-event-img-wide" alt="${evt.title}">
-                        <div class="past-event-content">
-                            <h3 class="past-event-title">${evt.title}</h3>
-                            <p style="color: #ccc;">Relive the memories from this epic trip!</p>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        // --- COUNTDOWN LOGIC ---
-        let countdownInterval;
-        function startCountdown() {
-            if(countdownInterval) clearInterval(countdownInterval);
-            countdownInterval = setInterval(() => {
-                const now = new Date().getTime();
-                const target = window.nextEventDate;
-                if (!target) { document.getElementById('days').innerText = "00"; return; }
-                const distance = target - now;
-                if (distance < 0) { loadEvents(); return; }
-                document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-                document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById('minutes').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById('seconds').innerText = Math.floor((distance % (1000 * 60)) / 1000);
-            }, 1000);
-        }
-
-        // --- ADMIN FUNCTIONS ---
-
-        async function addEvent(e) {
-            e.preventDefault();
-            const fileInput = document.getElementById('admin-event-file');
-            let imgData = await toBase64(fileInput.files[0]);
-            events.push({
-                id: Date.now(),
+            const newEvent = {
                 title: document.getElementById('admin-event-title').value,
                 date: document.getElementById('admin-event-date').value,
                 price: document.getElementById('admin-event-price').value,
+                deposit: document.getElementById('admin-event-deposit').value || 0,
                 type: document.getElementById('admin-event-type').value,
-                desc: document.getElementById('admin-event-desc').value,
-                img: imgData
-            });
-            saveData(); loadEvents(); alert("Event Posted!"); e.target.reset();
+                description: document.getElementById('admin-event-desc').value,
+                image_url: imageData
+            };
+
+            try {
+                await fetch(`${API_URL}/events`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newEvent)
+                });
+                alert("Event Posted Successfully!");
+                document.getElementById('event-form').reset();
+                loadEvents();
+            } catch (error) {
+                alert("Error posting event");
+                console.error(error);
+            }
+            btn.innerText = "Post Event";
+            btn.disabled = false;
         }
 
+        // --- ADMIN: ADD MERCH WITH IMAGE UPLOAD ---
         async function addMerch(e) {
             e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerText = "Adding...";
+            btn.disabled = true;
+            
             const fileInput = document.getElementById('admin-merch-file');
-            let imgData = await toBase64(fileInput.files[0]);
-            merch.push({
-                id: Date.now(),
+            let imageData = '';
+            
+            if (fileInput.files.length > 0) {
+                try {
+                    imageData = await toBase64(fileInput.files[0]);
+                } catch (error) {
+                    alert("Error processing image");
+                    btn.innerText = "Add Item";
+                    btn.disabled = false;
+                    return;
+                }
+            }
+
+            const newMerch = {
                 name: document.getElementById('admin-merch-name').value,
                 price: document.getElementById('admin-merch-price').value,
                 sizes: document.getElementById('admin-merch-sizes').value,
-                colors: document.getElementById('admin-merch-colors').value, // Saved here
+                colors: document.getElementById('admin-merch-colors').value,
                 status: document.getElementById('admin-merch-status').value,
-                img: imgData
-            });
-            saveData(); loadMerch(); alert("Merch Added!"); e.target.reset();
+                image_url: imageData
+            };
+
+            try {
+                await fetch(`${API_URL}/merch`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newMerch)
+                });
+                alert("Merchandise Added!");
+                document.querySelector('form[onsubmit="addMerch(event)"]').reset();
+                loadMerch();
+            } catch (error) {
+                alert("Error adding merchandise");
+                console.error(error);
+            }
+            btn.innerText = "Add Item";
+            btn.disabled = false;
         }
 
+        // --- ADMIN: ADD PAST EVENT WITH IMAGE UPLOAD ---
         async function addPastEvent(e) {
             e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerText = "Adding...";
+            btn.disabled = true;
+            
             const fileInput = document.getElementById('admin-past-file');
-            let imgData = null;
-            if (fileInput.files.length > 0) imgData = await toBase64(fileInput.files[0]);
-            pastEvents.push({ id: Date.now(), title: document.getElementById('admin-past-title').value, img: imgData });
-            saveData(); loadPastEvents(); alert("Added to Gallery!"); e.target.reset();
-        }
-
-        function renderAdminTable() {
-            const tbody = document.getElementById('admin-table-body');
-            tbody.innerHTML = '';
-            bookings.forEach((booking, index) => {
-                tbody.innerHTML += `
-                    <tr>
-                        <td>${booking.date}</td>
-                        <td>${booking.name}</td>
-                        <td>${booking.item}</td>
-                        <td style="color: var(--neon-pink);">${booking.customText || '-'}</td>
-                        <td>${booking.code}</td>
-                        <td class="${booking.status === 'Approved' ? 'status-approved' : 'status-pending'}">${booking.status}</td>
-                        <td>${booking.status === 'Pending' ? `<button onclick="approveBooking(${index})" style="background:green; color:white; border:none; padding:5px; cursor:pointer;">Approve</button>` : '-'}</td>
-                    </tr>
-                `;
-            });
-        }
-
-        function approveBooking(index) { bookings[index].status = 'Approved'; saveData(); renderAdminTable(); }
-
-        // --- MODAL LOGIC ---
-
-        function openPayment(itemName, isMerch) {
-            document.getElementById('selected-item-name').value = itemName;
-            // Show/Hide custom text field based on whether it's merch
-            const customGroup = document.getElementById('custom-text-group');
-            if(isMerch) {
-                customGroup.style.display = 'block';
-            } else {
-                customGroup.style.display = 'none';
-                document.getElementById('custom-back-text').value = ''; // Clear it
+            let imageData = '';
+            
+            if (fileInput.files.length > 0) {
+                try {
+                    imageData = await toBase64(fileInput.files[0]);
+                } catch (error) {
+                    alert("Error processing image");
+                    btn.innerText = "Add to Gallery";
+                    btn.disabled = false;
+                    return;
+                }
             }
+
+            const newPastEvent = {
+                title: document.getElementById('admin-past-title').value,
+                image_url: imageData
+            };
+
+            try {
+                await fetch(`${API_URL}/past-events`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newPastEvent)
+                });
+                alert("Added to Gallery!");
+                document.querySelector('form[onsubmit="addPastEvent(event)"]').reset();
+                loadPastEvents();
+            } catch (error) {
+                alert("Error adding to gallery");
+                console.error(error);
+            }
+            btn.innerText = "Add to Gallery";
+            btn.disabled = false;
+        }
+
+        // --- BOOKING WITH STK PUSH ---
+        async function handleBooking(e) {
+            e.preventDefault();
+            const btn = document.querySelector('#booking-form button');
+            btn.innerText = "Processing...";
+            btn.disabled = true;
+
+            const phone = document.getElementById('user-phone').value;
+            const amount = document.getElementById('final-amount-to-pay').value;
+            const code = document.getElementById('mpesa-code').value;
+            const name = document.getElementById('booker-name').value;
+            const item = document.getElementById('selected-item-name').value;
+            const type = document.getElementById('selected-payment-type').value;
+
+            try {
+                const response = await fetch(`${API_URL}/book`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        phoneNumber: phone,
+                        amount: amount,
+                        mpesaCode: code,
+                        name: name,
+                        eventName: item,
+                        paymentType: type
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(`STK Push sent to ${phone}. Check your phone!`);
+                    closeModal('payment-modal');
+                    document.getElementById('booking-form').reset();
+                } else {
+                    alert("Error: " + (data.error || "Failed"));
+                }
+            } catch (error) {
+                alert("Network Error");
+                console.error(error);
+            }
+            btn.innerText = "Confirm Payment & Book";
+            btn.disabled = false;
+        }
+
+        // --- ADMIN: LOAD BOOKINGS ---
+        async function loadAdminBookings() {
+            const tbody = document.getElementById('admin-table-body');
+            try {
+                const res = await fetch(`${API_URL}/bookings`);
+                const bookings = await res.json();
+                
+                tbody.innerHTML = '';
+                if (bookings.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; color:#666;">No bookings yet.</td></tr>';
+                    return;
+                }
+                
+                bookings.forEach(b => {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${new Date(b.createdAt || Date.now()).toLocaleDateString()}</td>
+                            <td>${b.name}</td>
+                            <td>${b.phone}</td>
+                            <td>${b.eventName}</td>
+                            <td>KES ${b.amountPaid}</td>
+                            <td>${b.mpesaCode}</td>
+                            <td style="color:${b.status === 'Approved' ? '#00ff00' : 'orange'}">${b.status}</td>
+                            <td>${b.status === 'Pending' ? `<button onclick="approveBooking(${b.id})" style="background:green; color:white; border:none; padding:5px;">Approve</button>` : '-'}</td>
+                        </tr>
+                    `;
+                });
+            } catch(e) { 
+                console.log(e);
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; color:red;">Error loading bookings.</td></tr>';
+            }
+        }
+
+        async function approveBooking(id) {
+            alert("Approval feature requires backend endpoint");
+        }
+
+        // --- MODAL FUNCTIONS ---
+        function openPayment(id, title, price, deposit, isMerch = false) {
+            document.getElementById('selected-item-name').value = title;
+            document.getElementById('selected-item-price').value = price;
+            document.getElementById('selected-item-deposit').value = deposit || 0;
+            
+            const payGroup = document.getElementById('payment-type-group');
+            if (!isMerch && deposit && deposit > 0) {
+                payGroup.style.display = 'block';
+                document.getElementById('opt-full-price').innerText = price;
+                document.getElementById('opt-deposit-price').innerText = deposit;
+                selectPaymentType('full', document.querySelectorAll('.pay-option')[0]);
+            } else {
+                payGroup.style.display = 'none';
+                document.getElementById('selected-payment-type').value = 'full';
+                document.getElementById('final-amount-to-pay').value = price;
+            }
+            
             document.getElementById('payment-modal').style.display = 'flex';
         }
 
-        function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
-
-        function handleBooking(e) {
-            e.preventDefault();
-            const name = document.getElementById('booker-name').value;
-            const code = document.getElementById('mpesa-code').value;
-            const item = document.getElementById('selected-item-name').value;
-            const customText = document.getElementById('custom-back-text').value;
-
-            bookings.unshift({
-                date: new Date().toISOString().split('T')[0],
-                name: name,
-                item: item,
-                customText: customText, // Saved here
-                code: code.toUpperCase(),
-                status: 'Pending'
-            });
-            saveData();
-            alert('Order Submitted! Admin will verify shortly.');
-            closeModal('payment-modal');
-            e.target.reset();
-            if(document.getElementById('admin-dashboard').style.display === 'block') renderAdminTable();
+        function selectPaymentType(type, element) {
+            document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            const price = parseFloat(document.getElementById('selected-item-price').value);
+            const deposit = parseFloat(document.getElementById('selected-item-deposit').value);
+            
+            document.getElementById('selected-payment-type').value = type;
+            let amount = (type === 'deposit') ? deposit : price;
+            document.getElementById('final-amount-to-pay').value = amount;
         }
 
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
         function openAdminLogin() { document.getElementById('admin-login-modal').style.display = 'flex'; }
-
+        
         function checkAdminPassword(e) {
             e.preventDefault();
             if (document.getElementById('admin-pass').value === "admin123") {
                 closeModal('admin-login-modal');
                 document.getElementById('main-content').style.display = 'none';
                 document.getElementById('admin-dashboard').style.display = 'block';
-                renderAdminTable();
-            } else { alert("Incorrect Password"); }
+                loadAdminBookings();
+            } else { alert("Wrong Password"); }
         }
-
+        
         function logoutAdmin() {
             document.getElementById('admin-dashboard').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
         }
 
-        window.onclick = function(event) { if (event.target.classList.contains('modal')) event.target.style.display = "none"; }
+        window.onclick = function(event) { 
+            if (event.target.classList.contains('modal')) closeModal(event.target.id);
+        }
+
+        window.onload = function() {
+            loadEvents();
+            loadMerch();
+            loadPastEvents();
+        };
     </script>
 </body>
 </html>
-```
